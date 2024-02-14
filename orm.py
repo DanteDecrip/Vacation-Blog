@@ -3,7 +3,10 @@ from helpers import read_db, write_db
 
 class Users:
     def __init__(self):
-        pass
+        self.db = read_db()
+
+    def __commit(self):
+        write_db(self.db)
 
     def all(self):
         db = read_db()
@@ -25,6 +28,16 @@ class Users:
             'password': new_password,
         }
 
-        db = read_db()
-        db['users'].append(new_user)
-        write_db(db)
+        self.db['users'].append(new_user)
+        self.__commit()
+
+        return new_user
+        
+    def delete(self, username):
+        popped_user = None
+        for idx, user in enumerate(self.db['users']):
+            if user['username'] == username:
+                popped_user = self.db['users'].pop(idx)
+
+        self.__commit()
+        return popped_user
