@@ -1,8 +1,7 @@
-from helpers import read_db
+from helpers import read_db, write_db
 
 
 class Users:
-    
     def __init__(self):
         pass
 
@@ -25,3 +24,7 @@ class Users:
             'username': new_username,
             'password': new_password,
         }
+
+        db = read_db()
+        db['users'].append(new_user)
+        write_db(db)
