@@ -1,7 +1,7 @@
 import json
 
 
-def read_db()):
+def read_db():
     with open('db.json') as fo:
         raw_data = fo.read()
 

@@ -13,7 +13,7 @@ class Users:
 
         return db['users']
 
-    def get(self, username)
+    def get(self, username):
         all_users = self.all()
 
         for i in range(len(all_users)):
