@@ -23,7 +23,7 @@ def login_page():
 
 @app.route('/credentials', methods=['post'])
 def logon():
-    attempted_user = get_user_by_name(request.form['uname'])
+    attempted_user = Users().get(request.form['uname'])
 
     if attempted_user is None:
         return redirect('/login_page')
