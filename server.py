@@ -1,8 +1,9 @@
-from flask import Flask, redirect, render_template, request
+from flask import Flask, redirect, render_template, request, session
 
 from orm import Users
 
 app = Flask(__name__) 
+app.secret_key = 'lame_key'
 
 @app.route('/')
 def home_page():
@@ -25,9 +26,10 @@ def login_page():
 def logon():
     attempted_user = Users().get(request.form['uname'])
 
-    if attempted_user is None:
+    if attempted_user is None or attempted_user['password'] != request.form['password']:
         return redirect('/login_page')
     else:
+        session['username'] = attempted_user['username']
         return redirect('/dashboard')
 
 @app.route('/dashboard')
