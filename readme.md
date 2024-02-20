@@ -7,3 +7,13 @@ Basic feature list:
 - [] Posts (CRUD)
 - [] like/dislike posts
 - [] Comments (CRUD)
+
+
+
+Things we need to do:
+- [] Hash passwords.
+- [] Move to a real DB.
+- [] Move to a real ORM.
+- [] Cleanup our routes for duplicates.
+- [] Cleanup our templates.
+- [] Write tests.
